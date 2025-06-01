@@ -1,15 +1,20 @@
 import WorkersListItem from '../workers-list-item/workers-list-item';
 import './workers-list.css'
 
-const WorkersList = () => {
+const WorkersList = ({data}) => {
+    const arrayWorkers = data.map(el => {
+        const {id, ...itemProps} = el;
+        return (
+        //name={el.name} salary={el.salary} - альтернатива {...el} должны быть одинаковые имена 
+        <WorkersListItem key={id} {...itemProps}/>
+    );
+         
+    });
     return (
         <ul className="app-list list-group">
-            <WorkersListItem/>
-            <WorkersListItem/>
-            <WorkersListItem/>
-            <WorkersListItem/>
+            {arrayWorkers}
         </ul>
     )
 }
 
-export default WorkersList;
+export default WorkersList; 
