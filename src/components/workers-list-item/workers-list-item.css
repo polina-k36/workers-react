@@ -24,26 +24,25 @@
 .list-group-item .btn-cookie {
     margin-right: 5px;
     color: #e09f3e;
-    border: none;
-    background: #e2e1e1;
+    border: 1px solid #fcf3d8;
+    background: #fcf3d8;
     transition: all 0.3s;
 
     &:hover {
-        border: 1px solid;
+        border: 1px solid #f69c14;
         color: #f69c14;
     }
 }
 
 .list-group-item .btn-trash {
     color: #e5383b;
-    border: none;
-    background: #e2e1e1;
+    border: 1px solid #ffebeb;
+    background: #ffebeb;
     transition: all 0.3s;
 
     &:hover {
-        margin-right: 4px;
         color: #ff0004;
-        border: 1px solid;
+        border: 1px solid #ff0004;
     }
 }
 

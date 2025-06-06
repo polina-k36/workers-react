@@ -5,7 +5,8 @@ class WorkersListItem extends Component{
     constructor(props){
         super(props)
         this.state = {
-            increase: props.increase
+            increase: false,
+            promotion: false
         }
     }
 
@@ -15,14 +16,20 @@ class WorkersListItem extends Component{
         }))
     }
 
+    changePromotion = () => {
+        this.setState(({promotion}) => ({
+            promotion: !promotion
+        }))
+    }
+
     render() {
         const {name, salary} = this.props;
-        const {increase} = this.state;
+        const {increase, promotion} = this.state;
         return(
             <li className={"list-group-item d-flex justify-content-between" +
-                (increase ? " increase" : "")
+                (increase ? " increase" : "") +  (promotion ? " like" : "")
             }>
-                <span className="list-group-item-label">{name}</span>
+                <span onClick={this.changePromotion} className="list-group-item-label">{name}</span>
                 <input type="text" 
                        className="list-group-item-input" 
                        defaultValue={salary + '$'}/>
