@@ -1,7 +1,7 @@
 import WorkersListItem from '../workers-list-item/workers-list-item';
 import './workers-list.css'
 
-const WorkersList = ({data, onDelete}) => {
+const WorkersList = ({data, onDelete, onAdd}) => {
     const arrayWorkers = data.map(el => {
         const {id, ...itemProps} = el;
         return (

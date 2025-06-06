@@ -19,16 +19,17 @@ class App extends Component{
                 {name:"Диана Власова", salary: 1100, id: 4},
                 {name:"Дмитрий Демидова", salary: 1200, id: 5},
             ]
-        }
+        };
+        this.maxId = 6;
     }
 
     deleteItem = (id) => {
         this.setState(({data}) => {
-            //const index = data.findIndex(elem => elem.id === id);
-            /* const before = data.slice(0, index);
+            /* const index = data.findIndex(elem => elem.id === id);
+            const before = data.slice(0, index);
             const after = data.slice(index + 1);
 
-            const newArr = [...before, ...after]; */
+            const newArr = [...before, ...after];  */
 
             const newArr = data.filter(item => item.id !== id)
 
@@ -36,6 +37,25 @@ class App extends Component{
                 data: newArr
             }
         })
+    }
+
+    addWorker = (e, name, salary) => {
+        e.preventDefault()
+        if (name.replaceAll(' ', '') && salary){
+            this.setState(({data}) => {
+                console.log(this.maxId);
+                const newArr = [...data, {name: name, salary: salary, id: this.maxId}];
+                this.maxId += 1;
+                console.log(this.maxId);
+
+                return({
+                    data: newArr
+                });
+            })
+            return true
+        }
+        return false
+
     }
 
     render() {
@@ -48,7 +68,7 @@ class App extends Component{
                     <AppFilter/>
                 </div>
                 <WorkersList data={data} onDelete={this.deleteItem}/>
-                <WorkersAddForm/>
+                <WorkersAddForm  onAddWorkers={this.addWorker}/>
                 
             </div>
         );

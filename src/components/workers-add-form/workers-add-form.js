@@ -17,6 +17,13 @@ class WorkersAddForm extends Component{
         })
     }
 
+    clearField = () => {
+        this.setState({
+            name : '',
+            salary: ''
+        })
+    }
+
     render() {
         const {name, salary} = this.state;
         return (
@@ -36,7 +43,10 @@ class WorkersAddForm extends Component{
                            name="salary"
                            value={salary}
                            onChange={this.onValueChange}/>
-                    <button type="submit" className="btn btn-outline-light">
+                    <button 
+                           type="submit" 
+                           className="btn btn-outline-light"
+                           onClick={(e) => {if (this.props.onAddWorkers(e, name, salary)) this.clearField()}}>
                         Добавить
                     </button>
                 </form>
