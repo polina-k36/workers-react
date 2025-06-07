@@ -5,6 +5,7 @@ import './app-filter.css';
 class AppFilter extends Component{
     constructor(props) {
         super(props);
+        
         this.state = {
             filter: 'all'
         };
@@ -25,6 +26,7 @@ class AppFilter extends Component{
                 </button>
             )
         });
+        
     }
 
     getSiblings = (target) => {
@@ -48,10 +50,10 @@ class AppFilter extends Component{
             item.classList.remove('btn-light')
             item.classList.add('btn-outline-light')
         });
-        console.log(this.buttons);
     }
     onFilterList = (e) => {
         this.activeClass(e.currentTarget);
+        
         const filter = e.currentTarget.getAttribute('data-filter');
         this.setState({filter})
         this.props.onFilterList(filter);

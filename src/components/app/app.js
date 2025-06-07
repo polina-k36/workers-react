@@ -114,7 +114,7 @@ class App extends Component{
 
     }
 
-    onUpdateState = (searchStr) => {
+    onUpdateSearch = (searchStr) => {
         this.setState({searchStr})
     }
 
