@@ -98,19 +98,23 @@ class App extends Component{
     }
 
     searchData = (items, searchStr) => {
-        items = 
-        this.state.filter === 'all'
-        ? items 
-        : this.state.filter === 'promotion'
-        ? items.filter(item => item.promotion === true)
-        : items.filter(item => item.salary >= 1000)
+        switch (this.state.filter) {
+            case 'promotion':
+                items = items.filter(item => item.promotion)
+                break;
+            case 'salary':
+                items = items.filter(item => item.salary > 1000)
+                break;
+            default:
+                break;
+        }
 
         if (searchStr.length === 0 ) return items
         return items.filter(item => item.name.indexOf(searchStr) > -1)
 
     }
 
-    onUpdateSearch = (searchStr) => {
+    onUpdateState = (searchStr) => {
         this.setState({searchStr})
     }
 
