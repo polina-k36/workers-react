@@ -41,7 +41,7 @@ class App extends Component{
 
     addWorker = (e, name, salary) => {
         e.preventDefault()
-        if (name.replaceAll(' ', '') && salary){
+        if (name.replaceAll(' ', '').length > 3 && salary > 100){
             this.setState(({data}) => {
                 const newArr = [...data, {name: name, 
                                           salary: salary, 
@@ -54,6 +54,7 @@ class App extends Component{
             })
             return true
         }
+        alert('Введите более корректные данные сотрудника. Имя сотрудника должно быть более 3 символов, а также его ЗП должна превышать 100$');
         return false
     }
 
