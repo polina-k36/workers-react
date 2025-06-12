@@ -1,16 +1,18 @@
 import WorkersListItem from '../workers-list-item/workers-list-item';
 import './workers-list.css'
 
-const WorkersList = ({data, onDelete, onToggleProp}) => {
+const WorkersList = ({data, onDelete, onToggleProp, onChangeSalary}) => {
     const arrayWorkers = data.map(el => {
         const {id, ...itemProps} = el;
         return (
         //name={el.name} salary={el.salary} - альтернатива {...el} должны быть одинаковые имена 
         <WorkersListItem 
-            key={id} 
+            key={id}
             {...itemProps}
             onDelete={() => onDelete(id)}
-            onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}/>
+            onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}
+            onChangeSalary={onChangeSalary}
+            id={id}/>
     );
          
     });

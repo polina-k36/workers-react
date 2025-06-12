@@ -113,7 +113,14 @@ class App extends Component{
         return items.filter(item => item.name.indexOf(searchStr) > -1)
 
     }
-
+    
+    onChangeSalary = (id, salary) => {
+        this.setState({
+            data: this.state.data.map(item =>
+                item.id === id ? { ...item, "salary": salary } : item
+            )
+        })
+    }
     onUpdateSearch = (searchStr) => {
         this.setState({searchStr})
     }
@@ -137,7 +144,8 @@ class App extends Component{
                 <WorkersList 
                     data={visibleData} 
                     onDelete={this.deleteItem}
-                    onToggleProp={this.onToggleProp}/>
+                    onToggleProp={this.onToggleProp}
+                    onChangeSalary={this.onChangeSalary}/>
                 <WorkersAddForm  onAddWorkers={this.addWorker}/>
                 
             </div>
